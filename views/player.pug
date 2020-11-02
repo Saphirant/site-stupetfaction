@@ -1,0 +1,24 @@
+extends blindtestlayout.pug
+
+block primary
+    script(src="/javascripts/blindtest_player.js")
+    h1= 'BLINDTEST: ' + name
+
+    p Volume
+        .slidecontainer
+            input#volumeRange.slider(type='range' min='1' max='100' value='100' oninput='updateVolume()')
+        button#playbutton(type='button' class='btn btn-secondary btn-sm' onclick='document.getElementById(\'audio\').play();') play
+
+    button#buzzer(type='button' class='btn btn-info btn-lg' onclick='buzz(\'' + name + '\')') BUZZ
+
+
+    div#playerBuzz(hidden)
+        h1
+            div#playerName #[em] a buzzé
+
+    audio#audio(controls=false)
+        source#source_audio(src='/blindtest/audio' type='audio/mpeg')
+
+    script= 'var playerName = \'' + name + '\';'
+
+    

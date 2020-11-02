@@ -1,0 +1,39 @@
+extends blindtestlayout.pug
+
+block primary
+    script(src="/javascripts/blindtest_master.js")
+    h1= 'BLINDTEST: MASTER'
+
+    .container
+        .row
+            p.col
+                audio#audio(controls=true onpause='audioPause()' onplay='audioPlay()')
+                    source#source_audio(src='/blindtest/audio' type='audio/mpeg')
+
+                button.btn.btn-sm.btn-secondary(type='button' onclick='syncMusic()') SYNCHRONISER
+
+            p.col
+                div#playerBuzz.card(hidden)
+                    div.card-header
+                        h2#playerName Buzz de #[strong]
+                    div.card-body Ajoutez des points:
+                        .row
+                            input#addScore(type="number")
+                            button(type='button' class='btn btn-info btn-lg' onclick='add_points()') Ajouter
+                        .row
+                            button(type='button' class='btn btn-info btn-lg' onclick='unlock_buzzer()') Débloquer
+        .row
+            p.col
+                input#searchmusicInput.btn-lg(type='text')
+                button.btn.btn-lg.btn-info(type='button' onclick='searchmusic()') Chercher
+                button.btn.btn-sm.btn-secondary(type='button' onclick='document.getElementById(\'searchList\').innerHTML = "";') Clear
+            p.col
+                input#playytmusicInput.btn-lg(type='text')
+                button.btn.btn-lg.btn-info(type='button' onclick='playytmusic()') Jouer
+
+        .row            
+            p#searchList.col
+            p#playlist.col
+
+
+

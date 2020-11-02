@@ -1,0 +1,15 @@
+extends blindtestlayout
+
+block primary
+    h1 BLINDTEST
+
+    form(method='POST' action='/blindtest/player/')
+        p
+        | Pseudo: 
+        input(type='text', name='name', value='')
+        button.btn.btn-primary(type='submit') Player
+
+    form(method='GET' action='/blindtest/master/')
+        button.btn.btn-primary(type='submit') Master
+
+    
